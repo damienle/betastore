@@ -12,6 +12,7 @@ gem "progressbar", "~> 0.21.0"
 gem 'sass-rails', '~> 4.0.0'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
+gem 'bcrypt-ruby', '~> 3.1.5'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -20,6 +21,7 @@ end
 
 group :development do
   gem 'hirb'
+  gem 'brakeman', require: false
 end
 
 group :test do
