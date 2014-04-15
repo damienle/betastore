@@ -7,12 +7,12 @@ gem 'faker'
 gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
 gem 'pg'
-gem 'rails', '4.0.3'
 gem "progressbar", "~> 0.21.0"
-gem 'sass-rails', '~> 4.0.0'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
-gem 'bcrypt-ruby', '~> 3.1.5'
+gem 'bcrypt', '~> 3.1.7'
+gem 'rails', '4.1.0'
+gem 'sass-rails', '~> 4.0.3'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -22,10 +22,11 @@ end
 group :development do
   gem 'hirb'
   gem 'brakeman', require: false
+  gem 'spring'
 end
 
 group :test do
-  gem 'minitest-colorize'
+  # gem 'minitest-colorize'
   gem 'capybara'
   gem 'launchy'
 end
