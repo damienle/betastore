@@ -85,7 +85,7 @@ Betastore::Application.configure do
   address:        ENV['MAILGUN_SMTP_SERVER'],
   user_name:      ENV['MAILGUN_SMTP_LOGIN'],
   password:       ENV['MAILGUN_SMTP_PASSWORD'],
-  domain:         'serene-thicket-5859.herokuapp.com',
+  domain:         'mysterious-wildwood-2634.herokuapp.com',
   authentication: :plain,
 }
 config.action_mailer.delivery_method = :smtp
