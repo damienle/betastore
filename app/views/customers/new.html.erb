@@ -1,0 +1,18 @@
+<h1>Create an Account</h1>
+<%= form_for :customer, url: customers_path  do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  Email <br><%= f.text_field :email %>
+   <p>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </p>
+
+
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

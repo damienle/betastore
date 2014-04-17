@@ -1,5 +1,8 @@
 Betastore::Application.routes.draw do
+
+
   resources :subscriptions
+  resources :customers
 
 
 

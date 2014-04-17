@@ -3,6 +3,9 @@ class CreateCustomers < ActiveRecord::Migration
     create_table :customers do |t|
       t.string :name
       t.string :email
+      t.string :password
+      t.timestamps :verified_at
+
 
       t.timestamps
     end
