@@ -9,7 +9,8 @@
 
 
 <div align="left">
-<%= form_for [:admin, @product] do |f| %>
+<%= form_for [:admin, @product], html: { class="form-horizontal" role="form"} do |f| %>
+
   <%= f.label :name %>
   <%= f.text_field :name %>
 

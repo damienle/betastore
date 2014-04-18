@@ -1,7 +1,10 @@
 <h1>Welcome, <%= @name %></h1>
 
 <p>
-  <%= @greeting %>, find me in app/views/user_mailer/welcome.html.erb
+  <%= @greeting %>,
+
 </p>
+
+Verify your account by clicking on <%= link_to "this link", check_customer_url(@token) %>
 
 <%= link_to "Log In", admin_login_url %>
