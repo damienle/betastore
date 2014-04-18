@@ -11,9 +11,9 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
     if @customer.save
-
+      CustomerMailer.confirm_email(@customer).deliver
       redirect_to @customer, notice: "Customer #{@customer.id} was created"
-      UserMailer.welcome(Customer.last).deliver
+
     else
       render 'new'
     end

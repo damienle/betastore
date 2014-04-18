@@ -6,12 +6,15 @@ class UserMailer < ActionMailer::Base
   #
   #   en.user_mailer.welcome.subject
   #
-  def welcome(user)
-    @name = user.email.split('@').first
+  def welcome(cust)
+    @customer = cust
+    @name = cust.email.split('@').first
     # @password = params[:customer][:password]
-    @token = Rails.application.message_verifier('customer').generate(user.id)
+    @token = Rails.application.message_verifier('customer').generate(cust.id)
 
-    mail to: user.email
+    # mail to: user.email
+    # mail to: "checking@gmail.com"
+    mail(to: @customer.email, subject: 'Welcome to new BetaStore Site')
 
 
 

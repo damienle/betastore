@@ -16,4 +16,4 @@ puts "hat categories: #{hat.categories.map{|c| c.name}}"
 me = Customer.create!(name: 'Damien', email: 'me@yahoo.com')
 
 me.creditcards.create(cardnum: '34343776876', expiry: '3/17')
-User.create!(email: 'cauhoi@gmail.com', password: 'secret')
+User.create!(email: 'mycauhoi@gmail.com', password: 'secret')
