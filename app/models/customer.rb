@@ -5,7 +5,7 @@ class Customer < ActiveRecord::Base
   has_many :creditcards
   has_secure_password validations: false
   # validation is true if you have two password field and need to check for correct
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
 
 

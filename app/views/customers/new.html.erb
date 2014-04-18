@@ -1,3 +1,8 @@
+<%= render 'layouts/flash' %>
+<% if flash[:notice].present? %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<div class="jumbotron">
 <h1>Create an Account</h1>
 <%= form_for :customer, url: customers_path  do |f| %>
   <p>
@@ -16,3 +21,4 @@
     <%= f.submit %>
   </p>
 <% end %>
+</div>

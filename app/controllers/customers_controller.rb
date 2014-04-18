@@ -15,7 +15,9 @@ class CustomersController < ApplicationController
       redirect_to @customer, notice: "Customer #{@customer.id} was created"
 
     else
-      render 'new'
+       flash.now[:danger] = 'Email or Name have been taken'
+       render 'new'
+      #render 'new', notice: "Duplicate account"
     end
     # Customer.create!(name: 'Damien', email: 'me@yahoo.com')
   end
