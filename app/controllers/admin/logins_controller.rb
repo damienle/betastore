@@ -1,6 +1,6 @@
 class Admin::LoginsController < Admin::BaseController
    skip_before_action :require_login
-
+  layout 'admin'
   def new
 
   end

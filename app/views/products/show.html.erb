@@ -1,0 +1,35 @@
+<ol class="breadcrumb">
+  <li><%= link_to "Products", products_path %></li>
+  <li class="active"><%= @product.name%></li>
+</ol>
+
+<div class="jumbotron">
+  <h1>Product #<%= @product.id%> : <%=@product.name%></h1>
+  <p><%= link_to "Back To Products", products_path, class: "btn btn-primary btn-lg", role: "button" %></p>
+
+  <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <%= image_tag(@product.image_url) %>
+
+          <div class="caption">
+            <h3> <%= @product.name.capitalize  %></h3>
+            <p>Product Details</p><br>
+            Price:<%= number_to_currency @product.price %><br>
+            Created at: <%= time_ago_in_words @product.created_at%> ago, <%= @product.created_at.strftime('%A, %b, %e, %Y, %T %Z')%>
+            <p>
+
+           <a href="#" class="btn btn-default" role="button">Buy</a>
+
+
+            </p>
+          </div>
+        </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+

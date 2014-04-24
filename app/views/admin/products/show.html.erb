@@ -1,3 +1,4 @@
+
  <table>
 
  <ol class="breadcrumb">
@@ -8,12 +9,8 @@
 <h1>Product <%= @product.id%></h1>
 <%= link_to "Back to products", admin_products_path, class: 'btn btn-primary' %>
 <%= link_to "Edit", edit_admin_product_path, class: 'btn btn-primary' %>
-<%= link_to "Delete", admin_product_path, method: :delete, confirm: "Are you sure?" %>
-<tr>
-    <th>Edit</th>
-    <td><%= link_to "Edit", edit_admin_product_path %></td>
-    <td><%= link_to "delete", admin_product_path, method: :delete, confirm: "Are you sure?" %></td>
-</tr>
+<%= link_to "Delete", admin_product_path, class: 'btn btn-primary', method: :delete, confirm: "Are you sure?" %>
+
 <tr>
     <th>Name</th>
     <td><%= @product.name %></td>

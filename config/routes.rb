@@ -29,5 +29,6 @@ Betastore::Application.routes.draw do
   get '/logout' => 'logins#destroy', as: 'logout'
 
   get '/products' => 'products#index', as: 'products'
+  get '/products/:id' => 'products#show', as: 'product'
   root :to => 'subscriptions#new'
 end

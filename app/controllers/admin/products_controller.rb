@@ -1,5 +1,6 @@
 class Admin::ProductsController < Admin::BaseController
 
+
   def index
     if logged_in?
       @products = Product.order('name')
@@ -12,6 +13,8 @@ class Admin::ProductsController < Admin::BaseController
       if Product.find(params[:id])
         @product = Product.find(params[:id])
       end
+
+
   end
   def new
   @product = Product.new
