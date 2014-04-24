@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'http://rails-assets.org'
 
 ruby "2.1.0"
 
@@ -13,6 +14,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'rails', '4.1.0'
 gem 'sass-rails', '~> 4.0.3'
+gem 'rails-assets-bootstrap'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

@@ -5,9 +5,9 @@ class Customer < ActiveRecord::Base
   has_many :creditcards
   has_secure_password validations: false
   # validation is true if you have two password field and need to check for correct
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
   validates :email, presence: true, uniqueness: true
-
+  after_create :send_verification_email
 
    def self.verify(token)
      customer_id = Rails.application.message_verifier('customer').verify(token)
@@ -17,4 +17,9 @@ class Customer < ActiveRecord::Base
    rescue
      nil
    end
+
+   def send_verification_email
+     CustomerMailer.confirm_email(self).deliver
+   end
+
 end

@@ -1,8 +1,4 @@
-class Admin::ProductsController < ApplicationController
-
-   layout 'admin'
-
-   before_action :require_login
+class Admin::ProductsController < Admin::BaseController
 
   def index
     if logged_in?
@@ -57,16 +53,16 @@ class Admin::ProductsController < ApplicationController
     # end
   end
 
-protected
-  def logged_in?
-    session[:user_id].present?
-  end
+# protected
+#   def logged_in?
+#     session[:user_id].present?
+#   end
 
-  def require_login
-    unless logged_in?
-      redirect_to admin_login_path, danger: 'Please log in to continue'
-    end
-  end
+#   def require_login
+#     unless logged_in?
+#       redirect_to admin_login_path, danger: 'Please log in to continue'
+#     end
+#   end
 
 end
 

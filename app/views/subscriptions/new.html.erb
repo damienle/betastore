@@ -1,1 +1,29 @@
+<section class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">BetaStore</h1>
+                        <p class="intro-text">A great shopping website designed by Betamore students</p>
+
+                        <div class="page-scroll">
+
+                               <%#= link_to "", products_path, class: "btn btn-circle"  %>
+                             <%= link_to(products_path, class: "btn btn-circle") do %>
+                                    <i class="fa fa-angle-double-down animated"> </i>
+                                <% end %>
+                            <!--
+                              <a href="#about" class="btn btn-circle">
+                                <span class="glyphicon glyphicon-tower"></span>
+                                </a>
+                            -->
+
+
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 <%= render 'form' %>

@@ -1,12 +1,102 @@
-<% if flash[:notice].present? %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
 
-<h1>This is a list of products</h1>
-<%= link_to "Sign Up", sign_up_path %>
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">BETASTORE</a>
+    </div>
 
-<ul>
-  <% for product in @products %>
-    <li><%= product.name %></li>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">PRODUCTS</a></li>
+        <li><a href="#">MORE</a></li>
+
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+          <% if flash[:notice].present? %>
+           <li> <a href="" style="color: #3399FF"><%= flash[:notice] %></a></li>
+           <%#link_to item.description, {}, {:style => 'color: #FFFFFF'}%>
+
+          <% end %>
+          <% if logged_in? %>
+               <li> <a href="">Welcome, <%= current_customer.name %></a></li>
+          <% end %>
+
+        <li><a href="#">Admin</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customers <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+
+            <% if logged_in? %>
+                <li><%= link_to "Log Out", logout_path %></li>
+            <% else %>
+                <li><%= link_to "Create An Account", sign_up_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Log In", logins_path %></li>
+            <% end %>
+
+
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<div class="row">
+
+<% i = 0 %>
+<% for product in @products %>
+
+  <% if product %>
+    <% i+=1 %>
+
+  <!--
+   <span class="label label-success">
+    <%= product.name %>
+    </span>
+   -->
+    <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <%= image_tag(product.image_url, size: "320x200") %>
+
+      <div class="caption">
+        <h3> <%= product.name.capitalize  %></h3>
+        <p>Product Details</p>
+        <p>
+          <%= link_to "View", admin_product_path(product), class: "btn btn-primary" , role:  "button"%>
+       <a href="#" class="btn btn-default" role="button">Buy</a>
+
+
+        </p>
+      </div>
+    </div>
+    </div>
+
+
+      <% if i.modulo(3).zero? %>
+        </div>
+        <div class="row">
+      <% end %>
+
+  <% else %>
+    </div>
   <% end %>
-</ul>
+
+
+
+<% end %>

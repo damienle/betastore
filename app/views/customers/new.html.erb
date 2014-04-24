@@ -1,7 +1,11 @@
-<%= render 'layouts/flash' %>
+
+<%#= render 'layouts/flash' %>
+
 <% if flash[:notice].present? %>
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>
+
+
 <div class="jumbotron">
 <h1>Create an Account</h1>
 <%= form_for :customer, url: customers_path  do |f| %>
@@ -9,7 +13,9 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </p>
-  Email <br><%= f.text_field :email %>
+  <p>
+  <%= f.label :email %><br>
+  <%= f.text_field :email %></p>
    <p>
     <%= f.label :password %><br>
     <%= f.password_field :password %>
@@ -18,7 +24,7 @@
 
 
   <p>
-    <%= f.submit %>
+    <%= f.submit "Create An Account"%>
   </p>
 <% end %>
 </div>

@@ -11,8 +11,8 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
     if @customer.save
-      CustomerMailer.confirm_email(@customer).deliver
-      redirect_to @customer, notice: "Customer #{@customer.id} was created"
+      # CustomerMailer.confirm_email(@customer).deliver
+      redirect_to products_path, notice: "Account \# #{@customer.id} created"
 
     else
        flash.now[:danger] = 'Email or Name have been taken'
@@ -34,7 +34,8 @@ class CustomersController < ApplicationController
 
      if customer
        # TODO: set_current_customer(customer)
-       redirect_to products_path, notice: 'Your account is confirmed'
+       set_current_customer(customer)
+       redirect_to products_path
      else
        redirect_to sign_up_path, alert: 'The verification link is invalid'
      end
