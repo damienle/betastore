@@ -19,12 +19,27 @@
         <li><a href="#">MORE</a></li>
 
       </ul>
+      <!--
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
+      -->
+
+
+        <%= form_tag({}, method: 'get', role: 'search', class: 'navbar-form navbar-left') do %>
+        <div class="form-group">
+
+        <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search' %>
+
+        </div>
+        <button type="submit" class="btn btn-default">Search</button>
+        <% end %>
+
+
+
       <ul class="nav navbar-nav navbar-right">
           <% if flash[:notice].present? %>
            <li> <a href="" style="color: #3399FF"><%= flash[:notice] %></a></li>
