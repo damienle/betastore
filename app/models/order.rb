@@ -17,6 +17,25 @@ class Order < ActiveRecord::Base
   # def self.by(customer)
   #   where(customer_id: customer.id)
   # end
+  def self.from_cart(cart)
+     order = new
+     cart.each do |product_id, quantity|
+       order.line_items.build(
+         product_id: product_id,
+         quantity: quantity
+       )
+     end
+     # order.calculate_totals
+     order
+   end
+
+   def calculate_totals
+     self.total_amount = line_items.inject(0) do |sum, li|
+       li.set_unit_price
+       sum + li.total_price
+     end
+   end
+
 
   def self.total_revenue
     # Order.connection.select_all("select sum(total_amount) from orders")

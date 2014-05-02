@@ -18,10 +18,10 @@
             Price:<%= number_to_currency @product.price %><br>
             Created at: <%= time_ago_in_words @product.created_at%> ago, <%= @product.created_at.strftime('%A, %b, %e, %Y, %T %Z')%>
             <p>
-
-           <a href="#" class="btn btn-default" role="button">Buy</a>
-
-
+            <%= button_to add_product_to_cart_path(@product), class: "btn btn-default" do  %>
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+             Add To Card
+            <% end %>
             </p>
           </div>
         </div>

@@ -9,6 +9,7 @@ class Admin::ProductsController < Admin::BaseController
       # render layout: 'admin'
     end
   end
+
   def show
       if Product.find(params[:id])
         @product = Product.find(params[:id])
@@ -48,11 +49,12 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def destroy
-    @product = Product.find(params[:id])
-    @product.destroy
-        # redirect_to admin_products_path, notice: "Product #{@product.id} is deleted"
+     @product = Product.find(params[:id])
+     @product.destroy
+
+    redirect_to admin_products_path, notice: "Product #{@product.id} is deleted"
     # else
-    #   render 'show'
+
     # end
   end
 

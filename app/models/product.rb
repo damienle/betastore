@@ -11,6 +11,10 @@ class Product < ActiveRecord::Base
   scope :min_price, -> (price) { where('price >= ?', price) }
   scope :max_price, -> (price) { where('price <= ?', price) }
 
+# when you do the add_product_to_cart_path(@product)
+  # def to_param
+  #   "#{id}-#{name.parameterize}"
+  # end
   # use scope is better
   # def self.search(q)
   #   # ilike mean will match lower case.

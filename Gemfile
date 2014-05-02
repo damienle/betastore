@@ -2,20 +2,21 @@ source 'https://rubygems.org'
 source 'http://rails-assets.org'
 
 ruby "2.1.0"
-
+# select gem press f5 to sort
+gem 'bcrypt', '~> 3.1.7'
+gem 'bugsnag'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'faker'
-gem 'pg_search'
 gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
 gem 'pg'
-gem "progressbar", "~> 0.21.0"
+gem 'pg_search'
+gem 'progressbar', '~> 0.21.0'
+gem 'rails', '4.1.0'
+gem 'rails-assets-bootstrap'
+gem 'sass-rails', '~> 4.0.3'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
-gem 'bcrypt', '~> 3.1.7'
-gem 'rails', '4.1.0'
-gem 'sass-rails', '~> 4.0.3'
-gem 'rails-assets-bootstrap'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
