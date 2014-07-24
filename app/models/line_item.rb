@@ -12,8 +12,8 @@ class LineItem < ActiveRecord::Base
 
   def set_price
     self.price ||=0
-    # self.price = product.price
-    self.price = 8
+    self.price = self.product.price
+
   end
 
   def total_price
