@@ -38,7 +38,7 @@ class Order < ActiveRecord::Base
 
      self.total_amount = self.line_items.inject(0) do |sum, li|
        li.set_price
-       sum + li.total_price
+        sum + li.total_price
      end
    end
 
