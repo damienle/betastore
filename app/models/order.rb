@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
   has_many :line_items, inverse_of: :order
-  has_many :products, :through => :line_items
+  # has_many :products, :through => :line_items
 
   belongs_to :customer
   belongs_to :creditcard, inverse_of: :orders
