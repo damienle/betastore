@@ -30,7 +30,7 @@ class Order < ActiveRecord::Base
          quantity: quantity
        )
      end
-     # calculate_totals
+     order.calculate_totals
      order
    end
 

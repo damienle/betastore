@@ -11,14 +11,14 @@ class LineItem < ActiveRecord::Base
 
 
   def set_price
-    self.price ||=0
-    self.price = self.product.price
+    # self.price ||=0
+    self.price = product.price
 
   end
 
   def total_price
-    self.price ||=0
-    self.quantity ||=0
+    # self.price ||=0
+    # self.quantity ||=0
     price * quantity
   end
 

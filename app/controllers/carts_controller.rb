@@ -6,7 +6,7 @@ class CartsController < ApplicationController
 
   def show
       @order = Order.from_cart(cart)
-      @order.calculate_totals
+      # @order.calculate_totals
   end
 
 protected
