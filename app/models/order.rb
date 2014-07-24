@@ -1,13 +1,18 @@
 class Order < ActiveRecord::Base
-  has_many :line_items
+  has_many :line_items, inverse_of: :order
   has_many :products, :through => :line_items
 
   belongs_to :customer
-  belongs_to :creditcard
+  belongs_to :creditcard, inverse_of: :orders
 
-  validates :creditcard_id, presence: true
+  validates :creditcard, presence: true
   validates :customer_id, presence: true
+  validate :credit_card_belongs_to_customer
 
+  accepts_nested_attributes_for :creditcard
+  accepts_nested_attributes_for :line_items
+
+  after_create :charge
   # after_save :send_email_to_customer
   #
   # def self.recent
@@ -25,13 +30,14 @@ class Order < ActiveRecord::Base
          quantity: quantity
        )
      end
-     # order.calculate_totals
+     # calculate_totals
      order
    end
 
    def calculate_totals
-     self.total_amount = line_items.inject(0) do |sum, li|
-       li.set_unit_price
+
+     self.total_amount = self.line_items.inject(0) do |sum, li|
+       li.set_price
        sum + li.total_price
      end
    end
@@ -47,6 +53,44 @@ class Order < ActiveRecord::Base
     connection.select_all("select customer_id, sum(total_amount) FROM orders GROUP BY customer_id")
 # group(:customer_id).sum(:total_amount)
   end
+
+  def credit_card_belongs_to_customer
+    if customer_id && credit_card_id
+      unless customer_id == credit_card.customer_id
+        errors.add(:credit_card_id, "does not belong to this customer")
+      end
+    end
+  end
+
+def charge
+
+  result = Braintree::Transaction.sale(
+  :amount => total_amount,
+  :credit_card => {
+    :number => creditcard.cardnum,
+    :expiration_month => creditcard.expiration_month,
+    :expiration_year => creditcard.expiration_year
+  }
+)
+
+if result.success?
+  logger.info "Transaction ID: #{result.transaction.id}"
+  # status will be authorized or submitted_for_settlement
+  logger.info "Transaction Status: #{result.transaction.status}"
+else
+  logger.error "Message: #{result.message}"
+  if result.transaction.nil?
+    # validation errors prevented transaction from being created
+    p result.errors
+  else
+    logger.error "Transaction ID: #{result.transaction.id}"
+    # status will be processor_declined, gateway_rejected, or failed
+    logger.error "Transaction Status: #{result.transaction.status}"
+  end
+end
+
+end
+
 
   # def increment_total_amount(amount)
   # update(total_amount: total_amount.to_f + amount)

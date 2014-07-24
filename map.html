@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+    <script>
+    var lat_lng= new google.maps.LatLng(28.4158, -81.2989)
+    var map;
+  var mapOptions = {
+    zoom: 8,
+    center: lat_lng,
+    mapTypeId: google.maps.MapTypeId.TERRAIN
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+   var marker = new google.maps.Marker({
+      position: lat_lng,
+      map: map,
+      title: 'Hello World!'
+  });
+</script>
+  </body>
+</html>

@@ -1,12 +1,13 @@
 class LineItem < ActiveRecord::Base
-  belongs_to :order
+
   belongs_to :product
+  belongs_to :order, inverse_of: :line_items
 
   before_validation :set_price
   after_save :increment_order_total_amount
 
-  validates :order_id, presence: true
-  validates :product_id, presence: true
+  validates :order, :product_id, presence: true
+  validates :quantity, presence: true, numericality: { greater_than: 0, allow_blank: true }
 
 
   def set_price

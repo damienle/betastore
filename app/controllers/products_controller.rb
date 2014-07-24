@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
 
+skip_before_action :require_login
   def index
     # @products is an active record not array, which you can add more querry
       @products = Product.order('name')
@@ -15,7 +16,10 @@ class ProductsController < ApplicationController
       # if params[:q].present?
       #     @products = @products.search(params[:q])
       # end
-
+    respond_to do |format|
+      format.html {}
+      format.json { render json: @products }
+    end
 
 
   end

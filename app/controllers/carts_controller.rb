@@ -6,15 +6,16 @@ class CartsController < ApplicationController
 
   def show
       @order = Order.from_cart(cart)
+      @order.calculate_totals
   end
 
 protected
 
 protected
-   def cart
+ #   def cart
  # set default value of hash to zero for any keys, return cart hash
-     session[:cart] ||= Hash.new(0)
-   end
+ #     session[:cart] ||= Hash.new(0)
+ #   end
 
    def add_to_cart(product_id)
   # increase by one, use to_i because we use to_params

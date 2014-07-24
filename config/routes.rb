@@ -5,11 +5,7 @@ Betastore::Application.routes.draw do
 
 
 
-  get 'orders/new'
 
-  get 'orders/create'
-
-  get 'orders/show'
 
   post '/products/:product_id/add_to_card' => 'carts#create', as: 'add_product_to_cart'
   get '/products/:product_id/add_to_card' => 'carts#create'
@@ -18,6 +14,7 @@ Betastore::Application.routes.draw do
 
   resources :subscriptions
   resources :customers
+  resources :orders
   resource :cart
 
 
