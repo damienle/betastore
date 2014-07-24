@@ -6,7 +6,7 @@ class Product < ActiveRecord::Base
 
   validates :name, presence: true
   validates :price, presence: true, numericality: { greater_than: 0 }
-  # validates :image_url, presence: true
+  validates :image_url, presence: true
   scope :search, -> (q) { where('name like ?', "%#{q}%") }
   scope :min_price, -> (price) { where('price >= ?', price) }
   scope :max_price, -> (price) { where('price <= ?', price) }
