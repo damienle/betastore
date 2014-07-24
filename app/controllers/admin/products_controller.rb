@@ -22,7 +22,7 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def create
-    @product = Product.new(params.require(:product).permit(:name, :price))
+    @product = Product.new(params.require(:product).permit(:name, :price, :image_url))
     if @product.save
       redirect_to admin_products_path, notice: "Product #{@product.id} was created"
     else
